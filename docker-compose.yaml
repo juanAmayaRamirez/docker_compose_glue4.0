@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  jupyter:
+    container_name: glue_jupyter
+    command: /home/glue_user/jupyter/jupyter_start.sh && sudo chown -R 10000:10000 /home/glue_user/workspace/jupyter_workspace
+    environment:
+      - DISABLE_SSL=true
+      - AWS_PROFILE=felipeadmin
+    image: amazon/aws-glue-libs:glue_libs_3.0.0_image_01
+    ports:
+      - '4040:4040'
+      - '18080:18080'
+      - '8998:8998'
+      - '8888:8888'
+    restart: always
+    volumes:
+      - /home/felipeadmin/.aws:/home/glue_user/.aws
+      - /home/felipeadmin/glue_jupyter_workspace:/home/glue_user/workspace/jupyter_workspace/

@@ -491,9 +491,9 @@ def upsert_hudi_table(spark_dyf: DynamicFrame,
             spark_d_df.write.format('hudi').options(**hudi_final_settings).mode('Append').save()
 
     elif ingestion_type == "fl":
-        hudi_final_settings["hoodie.datasource.write.operation"] = "insert_overwrite"
+        hudi_final_settings["hoodie.datasource.write.operation"] = "insert_overwrite_table"
         spark_df = spark_df.drop(*dropColumnList)
-        spark_df.write.format('hudi').options(**hudi_final_settings).mode('Overwrite').save()
+        spark_df.write.format('hudi').options(**hudi_final_settings).mode('Append').save()
 
     elif ingestion_type is None:
         spark_df.write.format('hudi').options(**hudi_final_settings).mode('Append').save()

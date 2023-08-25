@@ -19,5 +19,5 @@ services:
     restart: always
     volumes:
       - /home/felipeadmin/.aws:/home/glue_user/.aws
-      - /home/felipeadmin/glue_jupyter_workspace:/home/glue_user/workspace/jupyter_workspace/
+      - ./glue_jupyter_workspace:/home/glue_user/workspace/jupyter_workspace/
       - ./extra_python_path:/home/glue_user/workspace/extra_python_path/

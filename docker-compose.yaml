@@ -18,6 +18,6 @@ services:
       - '8888:8888' # Jupyter web server
     restart: always
     volumes:
-      - /home/felipeadmin/.aws:/home/glue_user/.aws
+      - ./.aws:/home/glue_user/.aws
       - ./glue_jupyter_workspace:/home/glue_user/workspace/jupyter_workspace/
       - ./extra_python_path:/home/glue_user/workspace/extra_python_path/

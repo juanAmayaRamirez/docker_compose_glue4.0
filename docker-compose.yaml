@@ -5,14 +5,19 @@ services:
     command: /home/glue_user/jupyter/jupyter_start.sh && sudo chown -R 10000:10000 /home/glue_user/workspace/jupyter_workspace
     environment:
       - DISABLE_SSL=true
-      - AWS_PROFILE=felipeadmin
-    image: amazon/aws-glue-libs:glue_libs_3.0.0_image_01
+      - AWS_PROFILE=glue4
+      - DATALAKE_FORMATS=hudi
+      - PYTHONPATH=$PYTHONPATH:/home/glue_user/workspace/extra_python_path/
+    image: amazon/aws-glue-libs:glue_libs_4.0.0_image_01
     ports:
-      - '4040:4040'
-      - '18080:18080'
-      - '8998:8998'
-      - '8888:8888'
+      - '4040:4040' # Spark web UI
+      - '4041:4041' # Spark web UI
+      - '18080:18080' # Spark History server
+      - '18081:18081' # Spark History server
+      - '8998:8998' # Jupyter web server
+      - '8888:8888' # Jupyter web server
     restart: always
     volumes:
       - /home/felipeadmin/.aws:/home/glue_user/.aws
       - /home/felipeadmin/glue_jupyter_workspace:/home/glue_user/workspace/jupyter_workspace/
+      - ./extra_python_path:/home/glue_user/workspace/extra_python_path/

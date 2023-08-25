@@ -7,3 +7,8 @@ this can be made with **makefile** `make makedir`
 2. Edit **line 8** of the **docker.compose.yml** file to point to the corresponding profile stored in `~/.aws/credentials`
 3. run the container with `docker-compose up -d` or with **makefile** `make run`.
 4. Open `localhost:8080`
+
+
+https://aws.amazon.com/es/blogs/big-data/develop-and-test-aws-glue-version-3-0-jobs-locally-using-a-docker-container/
+
+

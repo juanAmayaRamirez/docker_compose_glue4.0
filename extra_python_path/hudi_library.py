@@ -14,6 +14,12 @@ import sys
 
 args = getResolvedOptions(sys.argv, ['JOB_NAME'])
 
+"""
+Incremental ETL
+Author  : Soumil Nitin Shah
+Email   : shahsoumil519@gmail.com
+Github  : https://github.com/soumilshah1995/hudi-to-redshift-glue/blob/main/glue_template.py
+"""
 class NotFormatFoundError(Exception):
     pass
 class AWSS3(object):
@@ -234,6 +240,9 @@ class HUDIIncrementalReader(AWSS3):
 
         return self.__run()
 
+"""
+Libraries that can be used to simplify reads and writes using cdc
+"""
 
 def read_data_2(spark,
                 glueContext: GlueContext,
